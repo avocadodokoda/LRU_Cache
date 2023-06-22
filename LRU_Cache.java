@@ -3,18 +3,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LRU_Cache {
-    public class MapData {
-        Map<Object, Object> nestedMap = new HashMap<>();
-        Map<Object, Object> innerMap = new HashMap<>();
-
+    Package LRU;
+    private Map<Object, Object> nestedMap;
+    private Map<Object, Object> innerMap;
+    public LRU_Cache() {
+        nestedMap = new HashMap<>();
+        innerMap = new HashMap<>();
 
     }
-    public  class lru {
-        public  static <K, V> void put(K key, V value, int size){
-            LRU_Cache lru_Cache = new LRU_Cache();
-            MapData mapData = lru_Cache.new MapData();
-            Map<Object, Object> nestedMap = mapData.nestedMap;
-            Map<Object, Object> innerMap = mapData.innerMap;
+    public class lru {
+        public  <K, V> void put(K key, V value){
+            int size = 2;
             innerMap.put(key, value);
             if(innerMap.containsKey(key)){
                 //データが存在するとき
@@ -40,12 +39,8 @@ public class LRU_Cache {
             }
 
         }
-        public static <K, V> Object get(K key, int size){
-            LRU_Cache lru_Cache = new LRU_Cache();
-            MapData mapData = lru_Cache.new MapData();
-            Map<Object, Object> nestedMap = mapData.nestedMap;
-            Map<Object, Object> innerMap = mapData.innerMap;
-
+        public  <K> Object get(K key){
+            int size = 2;
             Object value = innerMap.get(key);
             if(innerMap.containsKey(key)){
                 //データが存在するとき
@@ -74,9 +69,9 @@ public class LRU_Cache {
         int size = 2;//最大サイズ
         Scanner scanner = new Scanner(System.in);
         LRU_Cache lru_Cache = new LRU_Cache();
-        MapData mapData = lru_Cache.new MapData();
-        Map<Object, Object> nestedMap = mapData.nestedMap;
-        Map<Object, Object> innerMap = mapData.innerMap;
+        Map<Object, Object> nestedMap = lru_Cache.nestedMap;
+        Map<Object, Object> innerMap = lru_Cache.innerMap;
+        
         
         boolean allNull = true;
         //keyとvalueを入力させる
@@ -95,8 +90,7 @@ public class LRU_Cache {
             System.out.println("key:" + key + ", value:" + value);
     
             scanner.close();
-
-            lru.put(key, value, size);
+            LRU_Cache.lru.put(key, value);
 
         }else {
             //2回目以降
@@ -108,7 +102,7 @@ public class LRU_Cache {
                 String key = scanner.next();
                 Object value = innerMap.get(key);
                 System.out.print("key:" + key + ", value:" + value);
-                lru.get(key, size);
+                LRU_Cache.lru.get(key);
             }else if(GorP.equals("put")){
                 System.out.print("key:"); 
                 Object key = scanner.next();
@@ -116,7 +110,7 @@ public class LRU_Cache {
                 String value = scanner.next();
         
                 System.out.println("key:" + key + ", value:" + value);
-                lru.put(key, value, size);
+                LRU_Cache.lru.put(key, value);
             }else {
                 System.out.println("無効な入力です。");
             }
