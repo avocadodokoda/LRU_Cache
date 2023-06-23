@@ -13,5 +13,7 @@ public class Test {
             System.out.println("key:" + i);
             System.out.println("value:" + value);
         }
+
+        lru.test2();
     }
 }
