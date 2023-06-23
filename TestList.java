@@ -15,10 +15,16 @@ public class TestList{
         instance.list.add(0, "aaa");
         instance.list.add(1, "bbb");
         instance.list.add(2, "ccc");
-        System.out.println(instance.list.get(0));
-        System.out.println(instance.list.get(1));
-        System.out.println(instance.list.get(2));
+        int length = instance.list.size();
+        for(int i = 0; i < length; i++){
+            System.out.println(instance.list.get(i));
+        }
+        System.out.println("#############");
+        instance.list.add(2, "xxx");
+        length = instance.list.size();
+        for(int i = 0; i < length; i++){
+            System.out.println(instance.list.get(i));
+        }
 
     }
-
 }

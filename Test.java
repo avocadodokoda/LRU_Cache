@@ -7,13 +7,8 @@ public class Test {
         lru.put("a", "apple");
         lru.put("b", "banana");
         lru.put("c", "cherry");
-        String[] allay = {"a", "b", "c"};
-        for (int i = 0; i < allay.length; i++){
-            value = lru.get(allay[i]);
-            System.out.println("key:" + i);
-            System.out.println("value:" + value);
-        }
-
-        lru.test2();
+        lru.put("b", "berry");
+        value = lru.get("a");
+        System.out.println("value: " + value);
     }
 }
