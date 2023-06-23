@@ -11,14 +11,9 @@ public class LRU_Cache{
     public List<Object> list = new ArrayList<>();
 
     public void put(Object key, Object value){
-        System.out.println(map.containsKey(key));
-        System.out.println(list.toString());
-        System.out.println(map.toString());
         if(map.containsKey(key)){
             //mapにそのkeyが存在するとき
             int index = list.indexOf(key);
-            System.out.println(index);
-
             removeOne(index);
         }
         map.put(key, value);
